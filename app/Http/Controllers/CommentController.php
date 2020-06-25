@@ -14,13 +14,12 @@ class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function showComment($id)
     {
         $students = Student::find($id);
-        // $comments = $student->comments;
         return view('comments.view',compact('students'));
     }
     /**
@@ -47,7 +46,7 @@ class CommentController extends Controller
         $user_email = User::all();
         $comment = new Comment();
             $to_email = $user_email->pluck("email")->toArray();
-            $data = array("application_E"=>"potheachorn@gmail.com","from"=>$user->email,"body"=>$request->comment,
+            $data = array("application_email"=>"potheachorn@gmail.com","from"=>$user->email,"body"=>$request->comment,
             "email"=>$to_email,"subject"=>"Comment");
             Mail::send("email.email",compact('data'),function($message) use($data){
                 $message->from($data['from'])
@@ -62,20 +61,9 @@ class CommentController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Comment  $comment
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Comment $comment)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Comment  $comment
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -88,7 +76,7 @@ class CommentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Comment  $comment
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -101,11 +89,9 @@ class CommentController extends Controller
         $comments->save();
         return redirect()->route('viewComment',$comments->student->id);
     }
-
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  \App\Comment  $comment
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

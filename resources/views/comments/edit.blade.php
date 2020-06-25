@@ -24,8 +24,8 @@
                            <div class="form-group">
                             <textarea name="comment" class="form-control">{{$comments->message}}</textarea>
                            </div>
-                           <button type="submit" class="btn btn-primary float-right">Comment</button>
-                           <a href="{{url('show')}}" class="btn btn-danger">Back</a>
+                           <button type="submit" class="btn btn-primary float-right">Update</button>
+                           <a href="{{url('comment/viewComment',$comments->student->id)}}" class="btn btn-danger">Back</a>
                         </form>
                     </div>
                 </div>

@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{{ url('admin/plugins/datatables-bs4/css/dataTables.bootstrap4.css')}}">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
-<link rel="stylesheet" href="../css/app.css">
+<link rel="stylesheet" href="../../css/app.css">
 @endpush
 @section('content')
 <ul class="breadcrumb">
@@ -19,15 +19,9 @@
                     <div class="card-header">
                         <h3 class="text-center text-primary">Comment</h3>
                     </div>
-                    <!-- /.card-header -->
-                    <?php
-                    // $role_id = DB::table('role_user')->where('user_id', Auth::user()->id)->first();
-                    // $role_name = DB::table('roles')->where('id', $role_id->role_id)->first();
-                    ?>
-
                     <div class="card-body">
                         <div class="clearfix">   
-                            <a href="{{route('comment',$students->id)}}"><button type="button" class="btn btn-primary mb-3">Add Comment</button></a>
+                            <a href="{{route('commentForm',$students->id)}}"><button type="button" class="btn btn-primary mb-3">Add Comment</button></a>
                         </div>
                         <table id="users" class="table table-striped table-bordered" style="width:100%">
 
@@ -49,8 +43,10 @@
                                     <td>{{$comment->message}}</td>
                                     <td>
                                         @if($comment->user->name == Auth::user()->name)
-                                        <a href="{{route('editComment',$comment->id)}}"><span class="material-icons">edit</span></a>
+                                        <a href="{{route('formEdit',$comment->id)}}"><span class="material-icons">edit</span></a>
                                         <a href="{{route('deleteComment',$comment->id)}}"><span class="material-icons text-danger">delete</span></a>  
+                                        @else
+                                           Not allowed
                                         @endif
                                     </td>
                                 </tr>

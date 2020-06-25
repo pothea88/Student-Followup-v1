@@ -7,12 +7,6 @@
             <div class="col-sm-6">
                 <h1>Edit User</h1>
             </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">User Admin</a></li>
-                    <li class="breadcrumb-item active">Add User</li>
-                </ol>
-            </div>
         </div>
     </div><!-- /.container-fluid -->
 </section>
@@ -87,9 +81,9 @@
                                         <label>Role Type</label>
                                         <select class="form-control" name="role">
                                             <option value="">--Select--</option>
-                                            @foreach ($role as $item)
-                                            <option value="{{$item->id}}"
-                                                {{$item->id == $user_role->role_id ? 'selected':''}}>{{$item->name}}
+                                            @foreach ($role as $role)
+                                            <option value="{{$role->id}}"
+                                                {{$role->id == $user_role->role_id ? 'selected':''}}>{{$role->name}}
                                             </option>
                                             @endforeach
                                         </select>

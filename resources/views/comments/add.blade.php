@@ -18,13 +18,13 @@
                         <h2 class="text-center">Comment</h2>
                     </div>
                     <div class="card-body">
-                        <form action="{{route('comments',$students->id)}}" method="POST">
+                        <form action="{{route('add',$students->id)}}" method="POST">
                             @csrf
                            <div class="form-group">
                             <textarea name="comment" class="form-control"></textarea>
                            </div>
                            <button type="submit" class="btn btn-primary float-right">Comment</button>
-                           <a href="{{url('show')}}" class="btn btn-danger">Back</a>
+                           <a href="{{url('comment/viewComment',$students->id)}}" class="btn btn-danger">Back</a>
                         </form>
                     </div>
                 </div>

@@ -19,7 +19,6 @@ class StudentController extends Controller
         $students = Student::all();
         return view('students.view',compact('students'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -30,7 +29,6 @@ class StudentController extends Controller
         $users = User::all();
         return view('students.add',compact('users'));
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -75,17 +73,6 @@ class StudentController extends Controller
         return view('students.edit',compact('student','users'));
     }
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Student  $student
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -125,29 +112,46 @@ class StudentController extends Controller
         $student->delete();
         return redirect('students/show');
     }
+    /**
+     * View the total of student in follow up
+     * @return \Illuminate\Http\Response
+     */
     public function viewTotalStudentFollowup(){
         $studentFollowup = Student::all()->where('status',1);
-        // dd($studentFollowup);
         return view('students.studentInFollowup',compact('studentFollowup'));
     }
+    /**
+     * View the total of student out of follow up
+     * @return \Illuminate\Http\Response
+     */
     public function viewStudentOutOfFollowup(){
         $studentOutOfFollowup = Student::all()->where('status',2);
-        // dd($studentFollowup);
         return view('students.studentOutOfFollowup',compact('studentOutOfFollowup'));
     }
+    /**
+     * View the total of student that never in follow up
+     * @return \Illuminate\Http\Response
+     */
     public function viewNormalStudent(){
         $normalStudent = Student::all()->where('status',0);
-        // dd($studentFollowup);
         return view('students.normalStudent',compact('normalStudent'));
     }
-    //function follow up
+    /**
+     * change status to follow up
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
     public function followUp($id){
         $students = Student::find($id);
         $students -> status= 1;
         $students -> save();
         return back();
     }
-    //function follow up
+     /**
+     * change status to​ out of follow up
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
     public function OutOfFollowUp($id){
         $students = Student::find($id);
         $students -> status= 2;

@@ -1,0 +1,12 @@
+.content-login{
+    position: absolute;
+    top: 61px;
+}
+.btn-block{
+    background-color:#E0352C;
+}
+.login-box-msg, .register-box-msg {
+    font-size: 20px;
+    font-weight: bold;
+}
+

@@ -1,4 +1,3 @@
-
 @extends('layouts.body')
 @section('content')
 <!-- Content Header (Page header) -->
@@ -122,6 +121,7 @@
                                             <option>----Select----</option>
                                             <option value="0" {{ ($student->status == 0) ? "selected" : "" }} >Normal</option>
                                             <option value="1" {{ ($student->status == 1) ? "selected" : "" }}>Follow up</option>
+                                            <option value="2" {{ ($student->status == 2) ? "selected" : "" }}>Out Of Followup</option>
                                         </select>
                                     </div>
                                 </div>

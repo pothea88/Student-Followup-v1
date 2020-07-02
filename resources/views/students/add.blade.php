@@ -7,12 +7,6 @@
             <div class="col-sm-6">
                 <h1>Add Student</h1>
             </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">User Admin</a></li>
-                    <li class="breadcrumb-item active">Add User</li>
-                </ol>
-            </div>
         </div>
     </div><!-- /.container-fluid -->
 </section>
@@ -87,9 +81,9 @@
                                             <option value="WEP-A">WEP-A</option>
                                             <option value="WEP-B">WEP-B</option>
                                             <option value="SNA">SNA</option>
-                                            <option value="2021-A">20201-A</option>
-                                            <option value="2021-B">20201-B</option>
-                                            <option value="2021-C">20201-C</option>
+                                            <option value="2021-A">2021-A</option>
+                                            <option value="2021-B">2021-B</option>
+                                            <option value="2021-C">2021-C</option>
                                         </select>
                                         @error('class')
                                         <span class="text-danger">

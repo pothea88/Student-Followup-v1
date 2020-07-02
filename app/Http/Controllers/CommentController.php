@@ -24,7 +24,7 @@ class CommentController extends Controller
     }
     /**
      * Show the form for creating a new resource.
-     *
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function create($id)
@@ -34,9 +34,10 @@ class CommentController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created resource in storage and send an email
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request,$id)

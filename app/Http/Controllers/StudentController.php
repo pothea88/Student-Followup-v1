@@ -63,7 +63,7 @@ class StudentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Student  $student
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -76,7 +76,7 @@ class StudentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Student  $student
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -94,7 +94,10 @@ class StudentController extends Controller
         return redirect('students/show');
     }
     /**
-     * Detail the information of specific student
+     * detail information of specific student
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
      */
     public function detail($id){
         $detail = Student::find($id);
@@ -103,7 +106,7 @@ class StudentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Student  $student
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -147,11 +150,11 @@ class StudentController extends Controller
         $students -> save();
         return back();
     }
-     /**
-     * change status to​ out of follow up
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
+      /**
+    * check status to out of follow up
+    * @param  int $id
+    * @return \Illuminate\Http\Response
+    */
     public function OutOfFollowUp($id){
         $students = Student::find($id);
         $students -> status= 2;

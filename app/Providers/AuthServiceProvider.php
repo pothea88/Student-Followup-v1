@@ -39,10 +39,5 @@ class AuthServiceProvider extends ServiceProvider
                 return $role->name === 'normal_user';
             }
         });
-       
-        // $user = Auth::user();
-        // if (Gate::forUser($user)->allows('up-de-comment', $post)) {
-            
-        // }
     }
 }

@@ -21,15 +21,7 @@
                         <h3 class="text-center text-primary">Comment</h3>
                     </div>
                     <!-- /.card-header -->
-                    <?php
-                    $role_id = DB::table('role_user')->where('user_id', Auth::user()->id)->first();
-                    $role_name = DB::table('roles')->where('id', $role_id->role_id)->first();
-                    ?>
-
                     <div class="card-body">
-                        <!-- <div class="clearfix">   
-                            <a href="#"><button type="button" class="btn btn-primary mb-3">Add Comment</button></a>
-                        </div> -->
                         <table id="users" class="table table-striped table-bordered" style="width:100%">
 
                             <thead>
@@ -52,10 +44,8 @@
                                     <td>{{$comments->message}}</td>
                                     @can('isAdmin', Auth::user())
                                     <td>
-                                        <!-- @if($comments->user->name == Auth::user()->name) -->
                                         <a href="{{route('editComment',$comments->id)}}"><span class="material-icons">edit</span></a>
                                         <a href="{{route('deleteComment',$comments->id)}}"><span class="material-icons text-danger">delete</span></a>  
-                                        <!-- @endif -->
                                     </td>
                                     @endcan
                                 </tr>

@@ -81,9 +81,9 @@
                                         <label>Role Type</label>
                                         <select class="form-control" name="role">
                                             <option value="">--Select--</option>
-                                            @foreach ($role as $item)
-                                            <option value="{{$item->id}}"
-                                                {{$item->id == $user_role->role_id ? 'selected':''}}>{{$item->name}}
+                                            @foreach ($role as $role)
+                                            <option value="{{$role->id}}"
+                                                {{$role->id == $user_role->role_id ? 'selected':''}}>{{$role->name}}
                                             </option>
                                             @endforeach
                                         </select>

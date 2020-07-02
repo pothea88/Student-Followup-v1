@@ -95,7 +95,6 @@
                                         <select class="form-control" name="status">
                                             <option value="">--Select--</option>
                                             <option value="1"> Active</option>
-                                            <option value="0"> Inactive</option>
                                         </select>
                                     </div>
                                 </div>

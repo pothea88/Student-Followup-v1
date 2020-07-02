@@ -47,7 +47,7 @@ class CommentController extends Controller
         $user_email = User::all();
         $comment = new Comment();
             $to_email = $user_email->pluck("email")->toArray();
-            $data = array("application_E"=>"potheachorn@gmail.com","from"=>$user->email,"body"=>$request->comment,
+            $data = array("application_email"=>"potheachorn@gmail.com","from"=>$user->email,"body"=>$request->comment,
             "email"=>$to_email,"subject"=>"Comment");
             Mail::send("email.email",compact('data'),function($message) use($data){
                 $message->from($data['from'])
@@ -60,9 +60,15 @@ class CommentController extends Controller
         $comment->save();
         return redirect()->route('viewComment',$student->id);
     }
+
     /**
      * Show the form for editing the specified resource.
+<<<<<<< HEAD
      * @param  int $id
+=======
+     *
+     * @param int $id
+>>>>>>> fa93dc81060dd7f45796266dd09dc4b7daf428eb
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -88,11 +94,9 @@ class CommentController extends Controller
         $comments->save();
         return redirect()->route('viewComment',$comments->student->id);
     }
-
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

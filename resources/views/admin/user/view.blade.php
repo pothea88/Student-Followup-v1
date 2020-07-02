@@ -38,15 +38,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($users as $item)
+                                @foreach ($users as $user)
                                 
                                 <tr>
-                                    <td>{{$item->id}}</td>
-                                    <td>{{$item->name}}</td>
-                                    <td>{{$item->email}}</td>
-                                    @foreach($item->roles as $role)
+                                    <td>{{$user->id}}</td>
+                                    <td>{{$user->name}}</td>
+                                    <td>{{$user->email}}</td>
+                                    @foreach($user->roles as $role)
                                         <td>{{$role->name}}</td>
                                     @endforeach
+<<<<<<< HEAD
                                     <td>{{$item->position}}</td>
                                     <td>{{$item->address}}</td>
                                     <td>
@@ -67,11 +68,33 @@
                                             </div>
                                        @endif
                                     </td>
+=======
+                                    <td>{{$user->position}}</td>
+                                    <td>{{$user->address}}</td>
+>>>>>>> fa93dc81060dd7f45796266dd09dc4b7daf428eb
                                     <td>
-                                        <a href="{{url('users/edit/'.$item->id)}}"><span class="material-icons">edit</span></a>
-                                        <a href="{{route('tutorComments',$item->id)}}"><span class="material-icons">message</span></a>
+                                        @if($user->status == 1)
+                                            <div class="dropdown">
+                                                <a class="text-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="false">Active</a>                            
+                                                <ul class="dropdown-menu">
+                                                    <a href="{{route('inactive',$user->id)}}">Inactive</a>
+                                                </ul>  
+                                            </div>
+                                        @endif
+                                        @if($user->status == 0)
+                                            <div class="dropdown">
+                                                <a class="text-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="false">Inactive</a>                            
+                                                <ul class="dropdown-menu">
+                                                    <a href="{{route('active',$user->id)}}">Active</a>
+                                                </ul>  
+                                            </div>
+                                       @endif
+                                    </td>
+                                    <td>
+                                        <a href="{{url('users/edit/'.$user->id)}}"><span class="material-icons">edit</span></a>
+                                        <a href="{{route('tutorComments',$user->id)}}"><span class="material-icons">message</span></a>
                                         <?php if($role->name != 'admin'){?>
-                                            <a href="{{route('mentor',$item->id)}}"><span class="material-icons">people</span></a>
+                                            <a href="{{route('mentor',$user->id)}}"><span class="material-icons">people</span></a>
                                         <?php } ?>
                                     </td>
                                 </tr>

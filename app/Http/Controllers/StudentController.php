@@ -19,7 +19,6 @@ class StudentController extends Controller
         $students = Student::all();
         return view('students.view',compact('students'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -30,7 +29,6 @@ class StudentController extends Controller
         $users = User::all();
         return view('students.add',compact('users'));
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -74,7 +72,6 @@ class StudentController extends Controller
         $users = User::all();
         return view('students.edit',compact('student','users'));
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -117,39 +114,36 @@ class StudentController extends Controller
         $student = Student::find($id);
         $student->delete();
         return redirect('students/show');
-    } 
+    }
     /**
-    * to view all of students in follow up
-    * @param  int $id
-    * @return \Illuminate\Http\Response
-    */
+     * View the total of student in follow up
+     * @return \Illuminate\Http\Response
+     */
     public function viewTotalStudentFollowup(){
         $studentFollowup = Student::all()->where('status',1);
         return view('students.studentInFollowup',compact('studentFollowup'));
     }
-     /**
-    * to view all of students out of follow up
-    * @param  int $id
-    * @return \Illuminate\Http\Response
-    */
+    /**
+     * View the total of student out of follow up
+     * @return \Illuminate\Http\Response
+     */
     public function viewStudentOutOfFollowup(){
         $studentOutOfFollowup = Student::all()->where('status',2);
         return view('students.studentOutOfFollowup',compact('studentOutOfFollowup'));
     }
     /**
-    * to view all of students as normal students
-    * @param  int $id
-    * @return \Illuminate\Http\Response
-    */
+     * View the total of student that never in follow up
+     * @return \Illuminate\Http\Response
+     */
     public function viewNormalStudent(){
         $normalStudent = Student::all()->where('status',0);
         return view('students.normalStudent',compact('normalStudent'));
     }
-     /**
-    * check status to follow up
-    * @param  int $id
-    * @return \Illuminate\Http\Response
-    */
+    /**
+     * change status to follow up
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
     public function followUp($id){
         $students = Student::find($id);
         $students -> status= 1;

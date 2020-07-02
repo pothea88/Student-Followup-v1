@@ -27,6 +27,8 @@ Route::group(['prefix'=>'users'], function(){
     Route::get('/','admin\UserController@view')->name('view');
     Route::match(['GET', 'POST'], 'add', 'Admin\UserController@create');
     Route::match(['GET', 'POST'], 'edit/{id}', 'Admin\UserController@edit');
+    Route::get('inactive/{id}','admin\UserController@inactive')->name('inactive');
+    Route::get('active/{id}','admin\UserController@active')->name('active');
     Route::get('/mentor/{id}','admin\UserController@mentorStudent')->name('mentor');
     Route::get('/tutorComments/{id}','admin\UserController@comments')->name('tutorComments');
 });

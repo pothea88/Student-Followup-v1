@@ -49,13 +49,24 @@
                                     @endforeach
                                     <td>{{$item->position}}</td>
                                     <td>{{$item->address}}</td>
-                                    <td><?php 
-                                        if($item->status == 1){
-                                            echo "Active";
-                                        }else{
-                                            echo "Inactive";
-                                        }
-                                    ?></td>
+                                    <td>
+                                        @if($item->status == 1)
+                                            <div class="dropdown">
+                                                <a class="text-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="false">Active</a>                            
+                                                <ul class="dropdown-menu">
+                                                    <a href="{{route('inactive',$item->id)}}">Inactive</a>
+                                                </ul>  
+                                            </div>
+                                        @endif
+                                        @if($item->status == 0)
+                                            <div class="dropdown">
+                                                <a class="text-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="false">Inactive</a>                            
+                                                <ul class="dropdown-menu">
+                                                    <a href="{{route('active',$item->id)}}">Active</a>
+                                                </ul>  
+                                            </div>
+                                       @endif
+                                    </td>
                                     <td>
                                         <a href="{{url('users/edit/'.$item->id)}}"><span class="material-icons">edit</span></a>
                                         <a href="{{route('tutorComments',$item->id)}}"><span class="material-icons">message</span></a>

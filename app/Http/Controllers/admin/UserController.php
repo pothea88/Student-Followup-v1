@@ -68,7 +68,25 @@ class UserController extends Controller
             return redirect("users");
         }
     }
-
+    public function inactive($id)
+    {
+        $user = User::find($id);
+        $user -> status= 0;
+        $user -> save();
+        return back();
+    }
+    /**
+     * Change status to active user
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function active($id)
+    {
+        $user = User::find($id);
+        $user -> status= 1;
+        $user -> save();
+        return back();
+    }
     /**
      * Show the form for editing the specified resource.
      * @param Illuminate\Http\Request $request

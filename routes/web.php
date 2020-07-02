@@ -26,7 +26,10 @@ Route::post('/login', [
 Route::group(['prefix'=>'users'], function(){
     Route::get('/','admin\UserController@view')->name('view');
     Route::match(['GET', 'POST'], 'add', 'Admin\UserController@create');
-    Route::match(['GET', 'POST'], 'edit/{id}', 'Admin\UserController@edit');
+    Route::match(['GET', 'POST'], 'edit/{id}', 'Admin\UserController@edit')->name('edit');
+    Route::post('update/{id}','admin\UserController@update')->name('update');
+    Route::get('inactive/{id}','admin\UserController@inactive')->name('inactive');
+    Route::get('active/{id}','admin\UserController@active')->name('active');
     Route::get('/mentor/{id}','admin\UserController@mentorStudent')->name('mentor');
     Route::get('/tutorComments/{id}','admin\UserController@comments')->name('tutorComments');
 });
@@ -46,9 +49,9 @@ Route::group(['prefix'=>'students'],function(){
 });
 Route::group(['prefix'=>'comment'],function(){
     Route::get('/viewComment/{id}','CommentController@showComment')->name('viewComment');
-    Route::get('/comment/{id}','CommentController@create')->name('comment');
-    Route::post('/comments/{id}','CommentController@store')->name('comments');
-    Route::get('/editComment/{id}','CommentController@edit')->name('editComment');
+    Route::get('/commentForm/{id}','CommentController@create')->name('commentForm');
+    Route::post('/add/{id}','CommentController@store')->name('add');
+    Route::get('/formEdit/{id}','CommentController@edit')->name('formEdit');
     Route::patch('/updateComment/{id}','CommentController@update')->name('updateComment');
     Route::get('/deleteComment/{id}','CommentController@destroy')->name('deleteComment');
 });

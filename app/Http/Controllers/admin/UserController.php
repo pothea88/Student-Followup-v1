@@ -21,16 +21,13 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-   
-
     public function view(){
         $users = User::all();
         return view('admin.user.view',compact('users'));
     }
-
     /**
-     * Show the form for creating a new resource.
-     * @param Illuminate\Http\Request $request
+     * Show the form for creating a new resource and add new student
+     * @param \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)
@@ -68,10 +65,10 @@ class UserController extends Controller
             return redirect("users");
         }
     }
-
     /**
-     * Show the form for editing the specified resource.
-     * @param Illuminate\Http\Request $request
+     * Show the form for editing the specified resource and also edit the user
+     *
+     * @param \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function edit(Request $request)
@@ -87,6 +84,7 @@ class UserController extends Controller
                 $validation = $request->validate([
                     'name' => 'required',
                     'role' => ['required'],
+                    'password'=>'required',
                     "email" => 'required|email|unique:users,email,' . $request->id . ',id',
                 ]);
                 if ($validation) {
@@ -130,13 +128,36 @@ class UserController extends Controller
                     }
                 }
             }
-           
             return redirect('users');
         }
     }
+    /**
+     * Change status to inactive user
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function inactive($id)
+    {
+        $user = User::find($id);
+        $user -> status= 0;
+        $user -> save();
+        return back();
+    }
+    /**
+     * Change status to active user
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function active($id)
+    {
+        $user = User::find($id);
+        $user -> status= 1;
+        $user -> save();
+        return back();
+    }
      /**
-     * Show student under mentor of each tutor
-     * @param int $id
+     * show all students under mentor
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function mentorStudent($id){
@@ -145,8 +166,8 @@ class UserController extends Controller
         return view('admin.user.viewStudentMentor',compact('students'));
     }
      /**
-     * Show all comments of each tutor
-     * @param int $id
+     * show all comments related to each user
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function comments($id){

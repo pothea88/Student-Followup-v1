@@ -18,7 +18,7 @@
                         <h2 class="text-center">Comment</h2>
                     </div>
                     <div class="card-body">
-                        <form action="{{route('comments',$students->id)}}" method="POST">
+                        <form action="{{route('add',$students->id)}}" method="POST">
                             @csrf
                            <div class="form-group">
                             <textarea name="comment" class="form-control"></textarea>

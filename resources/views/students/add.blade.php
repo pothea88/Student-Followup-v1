@@ -81,9 +81,9 @@
                                             <option value="WEP-A">WEP-A</option>
                                             <option value="WEP-B">WEP-B</option>
                                             <option value="SNA">SNA</option>
-                                            <option value="2021-A">20201-A</option>
-                                            <option value="2021-B">20201-B</option>
-                                            <option value="2021-C">20201-C</option>
+                                            <option value="2021-A">2021-A</option>
+                                            <option value="2021-B">2021-B</option>
+                                            <option value="2021-C">2021-C</option>
                                         </select>
                                         @error('class')
                                         <span class="text-danger">

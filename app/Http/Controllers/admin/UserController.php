@@ -30,7 +30,7 @@ class UserController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
+     * @param Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)
@@ -71,8 +71,7 @@ class UserController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
+     * @param Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function edit(Request $request)
@@ -135,16 +134,20 @@ class UserController extends Controller
             return redirect('users');
         }
     }
-    /**
-     * Show student uder mentor of each tutor
+     /**
+     * Show student under mentor of each tutor
+     * @param int $id
+     * @return \Illuminate\Http\Response
      */
     public function mentorStudent($id){
         $tutor = User::find($id);
         $students = $tutor->students;
         return view('admin.user.viewStudentMentor',compact('students'));
     }
-    /**
-     * Show all comment related to each tutor
+     /**
+     * Show all comments of each tutor
+     * @param int $id
+     * @return \Illuminate\Http\Response
      */
     public function comments($id){
         $tutor = User::find($id);

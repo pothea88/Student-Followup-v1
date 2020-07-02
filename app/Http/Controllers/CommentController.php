@@ -14,18 +14,17 @@ class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function showComment($id)
     {
         $students = Student::find($id);
-        // $comments = $student->comments;
         return view('comments.view',compact('students'));
     }
     /**
      * Show the form for creating a new resource.
-     *
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function create($id)
@@ -35,9 +34,10 @@ class CommentController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created resource in storage and send an email
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request,$id)
@@ -63,7 +63,7 @@ class CommentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Comment  $comment
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -76,7 +76,7 @@ class CommentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Comment  $comment
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -93,7 +93,7 @@ class CommentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Comment  $comment
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

@@ -19,11 +19,6 @@
                     <div class="card-header">
                         <h3 class="text-center text-primary">Student Normal</h3>
                     </div>
-                    <?php
-                    $role_id = DB::table('role_user')->where('user_id', Auth::user()->id)->first();
-                    $role_name = DB::table('roles')->where('id', $role_id->role_id)->first();
-                    ?>
-
                     <div class="card-body">
                         <table id="users" class="table table-striped table-bordered" style="width:100%">
 
@@ -70,9 +65,9 @@
                                     @endcan
                                     <td>{{$student->user->name}}</td>
                                     <td>
-                                    <?php if ($role_name->name == 'admin') { ?>
+                                    @can('isAdmin', Auth::user())
                                         <a href="{{route('showEdit',$student->id)}}"><span class="material-icons">edit</span></a>
-                                    <?php } ?>
+                                    @endcan
                                         <a href="{{route('detail',$student->id)}}"><span class="material-icons">visibility</span></a>  
                                     </td>
                                 </tr>

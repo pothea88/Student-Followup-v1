@@ -23,19 +23,14 @@
                         <h3 class="text-center text-primary">Student Management</h3>
                     </div>
                     <!-- <!-- /.card-header -->
-                    <?php
-                    $role_id = DB::table('role_user')->where('user_id', Auth::user()->id)->first();
-                    $role_name = DB::table('roles')->where('id', $role_id->role_id)->first();
-                    ?>
-
                     <div class="card-body">
                         <div class="clearfix">
-                            <?php if ($role_name->name == 'admin') { ?>
+                            @can('isAdmin', Auth::user())
                                 <a href="add"><button type="button" class="btn btn-primary mb-3">Add Student</button></a>
-                            <?php } ?>
-                            <?php if($role_name->name == 'normal_user'){ ?>
-                            <a href="{{route('mentor',$role_id->id)}}"><button type="button" class="mb-3 btn btn-primary">Student Mentor</button></a>
-                            <?php } ?>
+                            @endcan
+                            @can('isTutor', Auth::user())
+                            <a href="{{route('mentor',Auth::user()->id)}}"><button type="button" class="mb-3 btn btn-primary">Student Mentor</button></a>
+                            @endcan
                         </div>
                         <table id="users" class="table table-striped table-bordered" style="width:100%">
 
@@ -103,10 +98,10 @@
                                     @endcan
                                     <td>{{$student->user->name}}</td>
                                     <td>
-                                        <?php if ($role_name->name == 'admin') { ?>
+                                        @can('isAdmin', Auth::user())
                                             <a href="{{route('showEdit',$student->id)}}"><span class="material-icons">edit</span></a>
                                             <a href="{{route('deleteStudent',$student->id)}}"><span class="material-icons text-danger">delete</span></a>
-                                        <?php } ?>
+                                        @endcan
                                         <a href="{{route('detail',$student->id)}}"><span class="material-icons">visibility</span></a>  
                                     </td>
                                 </tr>

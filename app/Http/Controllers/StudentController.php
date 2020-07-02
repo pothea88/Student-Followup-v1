@@ -74,16 +74,6 @@ class StudentController extends Controller
         $users = User::all();
         return view('students.edit',compact('student','users'));
     }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Student  $student
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        
-    }
 
     /**
      * Update the specified resource in storage.

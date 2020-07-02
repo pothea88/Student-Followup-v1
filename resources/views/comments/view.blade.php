@@ -20,11 +20,6 @@
                         <h3 class="text-center text-primary">Comment</h3>
                     </div>
                     <!-- /.card-header -->
-                    <?php
-                    // $role_id = DB::table('role_user')->where('user_id', Auth::user()->id)->first();
-                    // $role_name = DB::table('roles')->where('id', $role_id->role_id)->first();
-                    ?>
-
                     <div class="card-body">
                         <div class="clearfix">   
                             <a href="{{route('comment',$students->id)}}"><button type="button" class="btn btn-primary mb-3">Add Comment</button></a>

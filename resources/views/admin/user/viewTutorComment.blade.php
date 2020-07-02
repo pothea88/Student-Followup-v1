@@ -44,7 +44,7 @@
                                     <td>{{$comments->message}}</td>
                                     @can('isAdmin', Auth::user())
                                     <td>
-                                        <a href="{{route('editComment',$comments->id)}}"><span class="material-icons">edit</span></a>
+                                        <a href="{{route('formEdit',$comments->id)}}"><span class="material-icons">edit</span></a>
                                         <a href="{{route('deleteComment',$comments->id)}}"><span class="material-icons text-danger">delete</span></a>  
                                     </td>
                                     @endcan
